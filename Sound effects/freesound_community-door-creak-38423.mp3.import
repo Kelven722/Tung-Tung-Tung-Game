@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1oweaclsha3k"
+path="res://.godot/imported/freesound_community-door-creak-38423.mp3-de4f72cae92240b4d52638351861e192.mp3str"
+
+[deps]
+
+source_file="res://Sound effects/freesound_community-door-creak-38423.mp3"
+dest_files=["res://.godot/imported/freesound_community-door-creak-38423.mp3-de4f72cae92240b4d52638351861e192.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
