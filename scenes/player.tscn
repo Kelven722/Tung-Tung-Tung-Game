@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ckudr8chj1kgo"]
+
+[ext_resource type="Script" uid="uid://b0gd8hrqpvtbb" path="res://player/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://df678dbt7c6vh" path="res://player/first_person_cam.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://bnsqhunlvp1xh" path="res://player/FOV.gd" id="3_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://blv84qqepyx1" path="res://sounds/click_sound.mp3" id="4_dqkch"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqkch"]
+albedo_color = Color(0.96625966, 0.8474096, 0.9040456, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
+material = SubResource("StandardMaterial3D_dqkch")
+
+[node name="player" type="CharacterBody3D" unique_id=1865145875]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1810509203]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=10762280]
+mesh = SubResource("CapsuleMesh_4flbx")
+
+[node name="head" type="Node3D" parent="." unique_id=2085885484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55281496, 0)
+script = ExtResource("2_onrkg")
+
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=785523849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028635025, -0.49982584)
+script = ExtResource("3_i3pqv")
+
+[node name="click_sound" type="AudioStreamPlayer3D" parent="head/Camera3D" unique_id=769157081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.17915228)
+stream = ExtResource("4_dqkch")

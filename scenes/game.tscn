@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://elst0xn32iil"]
+
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://cbmfpfim06u8s" path="res://player/flashlight.gd" id="2_lnu2h"]
+
+[sub_resource type="Environment" id="Environment_feb5d"]
+background_mode = 3
+background_energy_multiplier = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjtg"]
+albedo_color = Color(0.61295664, 0.43995234, 0.4212793, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mwb40"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80nbo"]
+
+[node name="game" type="Node3D" unique_id=297197641]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=693028575]
+environment = SubResource("Environment_feb5d")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2106895490]
+transform = Transform3D(1, 0, 0, 0, -0.17631167, 0.9843344, 0, -0.9843344, -0.17631167, 0, 14.069249, -4.134317)
+
+[node name="player" parent="." unique_id=1865145875 instance=ExtResource("1_yqjtg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="flashlight" type="SpotLight3D" parent="." unique_id=687534129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.3244934, 0)
+light_energy = 7.0
+light_volumetric_fog_energy = 0.2
+shadow_enabled = true
+spot_range = 17.0
+spot_angle = 13.427917
+script = ExtResource("2_lnu2h")
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=2115377763]
+transform = Transform3D(19.976612, 0, 0, 0, 0.14748651, 0, 0, 0, 20.730303, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1032634496]
+material_override = SubResource("StandardMaterial3D_yqjtg")
+mesh = SubResource("BoxMesh_mwb40")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=52001589]
+shape = SubResource("BoxShape3D_80nbo")
